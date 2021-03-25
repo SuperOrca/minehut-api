@@ -10,7 +10,7 @@ setuptools.setup(
     description='Minehut API wrapper',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/deadshot465/owoify-py',
+    url='https://github.com/SuperOrca/minehut',
     packages=setuptools.find_packages(),
     classfiers=[
         'Programming Language :: Python :: 3.6',
