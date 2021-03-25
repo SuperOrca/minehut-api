@@ -4,7 +4,7 @@ with open('README.md', 'r', encoding='utf-8') as README:
     long_description = README.read()
 
 setuptools.setup(
-    name='owoify-py',
+    name='minehut',
     version='1.0.0',
     author='SuperOrca',
     description='Minehut API wrapper',
