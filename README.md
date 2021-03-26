@@ -7,7 +7,7 @@
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the main branch.
 
 ```bash
-pip install git+https://github.com/SuperOrca/minehut.git
+pip install git+https://github.com/SuperOrca/minehut-api.git
 ```
 
 ## 📌 Usage
