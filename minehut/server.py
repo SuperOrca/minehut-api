@@ -2,7 +2,7 @@ from datetime import datetime
 
 import requests
 
-from .manager import ServerManager
+from .manager import ServerManager, Credentials
 from .plugin import Plugin
 
 BASE_API_URL = "https://api.minehut.com"
@@ -14,9 +14,9 @@ class IllegalArgumentError(ValueError):
 
 class Server:
     def __init__(self, name: str = None, id: str = None):
-        if name is None:
+        if name is not None:
             self.base_url = '{}/server/{}?byName=true'.format(BASE_API_URL, name)
-        elif id is None:
+        elif id is not None:
             self.base_url = '{}/server/{}'.format(BASE_API_URL, id)
         else:
             raise IllegalArgumentError("Server does not exist.")
@@ -86,15 +86,13 @@ class Server:
     def getPlayers(self):
         return self.toJSON()['players']
 
-    def admin(self, credentials):
-        return ServerManager(self, credentials)
+    def admin(self, credentials: Credentials):
+        return ServerManager(self.getId(), credentials)
 
 
 def getServers():
-    servers = []
-    for server in requests.get('{}/servers'.format(BASE_API_URL)).json()['servers']:
-        servers.append(Server(server['name']))
-    return servers
+    data = requests.get('{}/servers'.format(BASE_API_URL)).json()['servers']
+    return [Server(server['name']) for server in data]
 
 
 def getServer(name: str):

@@ -8,7 +8,6 @@ import pyppeteer as tr
 import requests
 
 from .plugin import Plugin
-from .server import Server
 
 BASE_API_URL = "https://api.minehut.com"
 
@@ -20,9 +19,8 @@ class Credentials:
 
 
 class ServerManager:
-    def __init__(self, server: Server, credentials: Credentials):
-        self.server = server
-        self.id = server.getId()
+    def __init__(self, id: str, credentials: Credentials):
+        self.id = id
         self.headers = {
             "x-session-id": credentials.minehut_session_id,
             "authorization": credentials.minehut_auth_token
