@@ -108,7 +108,7 @@ class ServerManager:
     def reset(self):
         return requests.post('{}/server/{}/reset_all'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
-    def reset(self):
+    def repair(self):
         return requests.post('{}/server/{}/repair_files'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
 
