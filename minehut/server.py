@@ -2,7 +2,7 @@ from datetime import datetime
 
 import requests
 
-from plugin import Plugin
+from .plugin import Plugin
 
 
 class IllegalArgumentError(ValueError):
