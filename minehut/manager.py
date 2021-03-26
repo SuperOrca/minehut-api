@@ -31,85 +31,85 @@ class ServerManager:
         return data
 
     def startFromHibernation(self):
-        return requests.post('{}/server/{}/start_service'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/start_service'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def stopFromHibernation(self):
-        return requests.post('{}/server/{}/destroy_service'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/destroy_service'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def start(self):
-        return requests.post('{}/server/{}/start'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/start'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def stop(self):
-        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def restart(self):
-        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def visibility(self, visibility: bool):
         data = {"visibility", visibility}
-        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), data=data, headers=self.headers)
+        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
 
     def sendCommand(self, command: str):
         data = {"command": command}
-        return requests.post('{}/server/{}/send_command'.format(BASE_API_URL, self.id), data=data, headers=self.headers)
+        return requests.post('{}/server/{}/send_command'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
 
     def changeServerIcon(self, icon: str):
         data = {"icon_id": icon}
-        return requests.post('{}/server/{}/icon/equip'.format(BASE_API_URL, self.id), data=data, headers=self.headers)
+        return requests.post('{}/server/{}/icon/equip'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
 
     def rename(self, name: str):
         data = {"name": name}
-        return requests.post('{}/server/{}/change_name'.format(BASE_API_URL, self.id), data=data, headers=self.headers)
+        return requests.post('{}/server/{}/change_name'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
 
     def editServerProperties(self, field: str, value: str):
         data = {"field": field, "value": value}
         return requests.post('{}/server/{}/edit_server_properties'.format(BASE_API_URL, self.id), data=data,
-                             headers=self.headers)
+                             headers=self.headers).json()
 
     def installPlugin(self, plugin: Plugin):
         data = {"plugin": plugin.getId()}
         return requests.post('{}/server/{}/install_plugin'.format(BASE_API_URL, self.id), data=data,
-                             headers=self.headers)
+                             headers=self.headers).json()
 
     def uninstallPlugin(self, plugin: Plugin):
         data = {"plugin": plugin.getId()}
         return requests.post('{}/server/{}/remove_plugin'.format(BASE_API_URL, self.id), data=data,
-                             headers=self.headers)
+                             headers=self.headers).json()
 
     def resetPluginConfig(self, plugin: Plugin):
         data = {"plugin": plugin.getId()}
         return requests.post('{}/server/{}/remove_plugin_data'.format(BASE_API_URL, self.id), data=data,
-                             headers=self.headers)
+                             headers=self.headers).json()
 
     def saveWorld(self):
-        return requests.post('{}/server/{}/save'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/save'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def resetWorld(self):
-        return requests.post('{}/server/{}/reset_world'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/reset_world'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def getBackups(self):
-        return requests.get('{}/v1/server/{}/backups'.format(BASE_API_URL, self.id), headers=self.headers).json()
+        return requests.get('{}/v1/server/{}/backups'.format(BASE_API_URL, self.id), headers=self.headers).json().json()
 
     def restoreBackup(self, backup):
         data = {"backup_id": backup}
         return requests.post('{}/v1/server/{}/backup/apply'.format(BASE_API_URL, self.id), data=data,
-                             headers=self.headers)
+                             headers=self.headers).json()
 
     def createBackup(self, backup):
         data = {"backup_id": backup}
         return requests.post('{}/v1/server/{}/backup/create'.format(BASE_API_URL, self.id), data=data,
-                             headers=self.headers)
+                             headers=self.headers).json()
 
     def deleteBackup(self, backup):
         data = {"backup_id": backup}
         return requests.delete('{}/v1/server/{}/backup/create'.format(BASE_API_URL, self.id), data=data,
-                               headers=self.headers)
+                               headers=self.headers).json()
 
     def reset(self):
-        return requests.post('{}/server/{}/reset_all'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/reset_all'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
     def reset(self):
-        return requests.post('{}/server/{}/repair_files'.format(BASE_API_URL, self.id), headers=self.headers)
+        return requests.post('{}/server/{}/repair_files'.format(BASE_API_URL, self.id), headers=self.headers).json()
 
 
 # Scape minehut dashboard for auth token and session id
