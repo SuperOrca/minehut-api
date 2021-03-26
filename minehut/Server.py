@@ -77,3 +77,14 @@ class Server(object):
 
     def getPlayers(self):
         return self.toJSON()['players']
+
+
+def getServers():
+    servers = []
+    for server in requests.get('https://api.minehut.com/servers').json()['servers']:
+        servers.append(Server(server['name']))
+    return servers
+
+
+def getServer(name):
+    return Server(name)

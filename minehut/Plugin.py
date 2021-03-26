@@ -2,8 +2,6 @@ from datetime import datetime
 
 import requests
 
-PLUGINS = requests.get('https://api.minehut.com/plugins_public').json()['all']
-
 
 class IllegalArgumentError(ValueError):
     pass
@@ -60,3 +58,15 @@ class Plugin(object):
 
     def getLastUpdatedDatetime(self):
         return datetime.fromtimestamp(self.data['last_updated'] / 1000.0)
+
+
+PLUGINS = requests.get('https://api.minehut.com/plugins_public').json()['all']
+PLUGIN_LIST = [Plugin(id=plugin['_id']) for plugin in PLUGINS]
+
+
+def getPlugins():
+    return PLUGIN_LIST
+
+
+def getPlugin(name):
+    return Plugin(name)
