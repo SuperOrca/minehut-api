@@ -1,6 +1,6 @@
 import requests
 
-from .Server import Server
+from .server import Server
 
 
 def getServerCap():
