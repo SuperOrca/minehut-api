@@ -1,1 +1,4 @@
 requests>=2.25.1
+asyncio>=3.4.3
+pyppeteer>=0.2.5
+DateTime>=4.3

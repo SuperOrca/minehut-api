@@ -2,13 +2,15 @@ from datetime import datetime
 
 import requests
 
+BASE_API_URL = "https://api.minehut.com"
+
 
 class IllegalArgumentError(ValueError):
     pass
 
 
-class Plugin(object):
-    def __init__(self, name=None, id=None):
+class Plugin:
+    def __init__(self, name: str = None, id: str = None):
         if name is None and id is None:
             raise IllegalArgumentError("Plugin does not exist.")
         else:
@@ -60,7 +62,7 @@ class Plugin(object):
         return datetime.fromtimestamp(self.data['last_updated'] / 1000.0)
 
 
-PLUGINS = requests.get('https://api.minehut.com/plugins_public').json()['all']
+PLUGINS = requests.get('{}/plugins_public'.format(BASE_API_URL)).json()['all']
 PLUGIN_LIST = [Plugin(id=plugin['_id']) for plugin in PLUGINS]
 
 
