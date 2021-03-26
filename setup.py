@@ -4,13 +4,13 @@ with open('README.md', 'r', encoding='utf-8') as README:
     long_description = README.read()
 
 setuptools.setup(
-    name='minehut',
+    name='minehut-api',
     version='1.0.0',
     author='SuperOrca',
     description='Minehut API wrapper',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/SuperOrca/minehut',
+    url='https://github.com/SuperOrca/minehut-api',
     packages=setuptools.find_packages(),
     classfiers=[
         'Programming Language :: Python :: 3.6',

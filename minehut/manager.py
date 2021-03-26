@@ -47,19 +47,23 @@ class ServerManager:
 
     def visibility(self, visibility: bool):
         data = {"visibility", visibility}
-        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
+        return requests.post('{}/server/{}/shutdown'.format(BASE_API_URL, self.id), data=data,
+                             headers=self.headers).json()
 
     def sendCommand(self, command: str):
         data = {"command": command}
-        return requests.post('{}/server/{}/send_command'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
+        return requests.post('{}/server/{}/send_command'.format(BASE_API_URL, self.id), data=data,
+                             headers=self.headers).json()
 
     def changeServerIcon(self, icon: str):
         data = {"icon_id": icon}
-        return requests.post('{}/server/{}/icon/equip'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
+        return requests.post('{}/server/{}/icon/equip'.format(BASE_API_URL, self.id), data=data,
+                             headers=self.headers).json()
 
     def rename(self, name: str):
         data = {"name": name}
-        return requests.post('{}/server/{}/change_name'.format(BASE_API_URL, self.id), data=data, headers=self.headers).json()
+        return requests.post('{}/server/{}/change_name'.format(BASE_API_URL, self.id), data=data,
+                             headers=self.headers).json()
 
     def editServerProperties(self, field: str, value: str):
         data = {"field": field, "value": value}
