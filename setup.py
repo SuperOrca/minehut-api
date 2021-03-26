@@ -17,6 +17,6 @@ setuptools.setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent'
     ],
-    python_requires='>=3.6'
+    python_requires='>=3.6',
     install_requires=['requests>=2.25.1', 'asyncio>=3.4.3', 'pyppeteer>=0.2.5', 'DateTime>=4.3']
 )
