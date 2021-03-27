@@ -17,6 +17,12 @@ class Credentials:
         self.minehut_session_id = minehut_session_id
         self.minehut_auth_token = minehut_auth_token
 
+    def getSessionId(self):
+        return self.minehut_session_id
+
+    def getAuthToken(self):
+        return self.minehut_auth_token
+
 
 class ServerManager:
     def __init__(self, id: str, credentials: Credentials):
@@ -26,7 +32,7 @@ class ServerManager:
             "authorization": credentials.minehut_auth_token
         }
 
-    def allData(self):
+    def getData(self):
         data = requests.get('{}/server/{}/all_data'.format(BASE_API_URL, self.id), headers=self.headers).json()
         return data
 
