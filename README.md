@@ -33,7 +33,7 @@ Please make sure to update tests as appropriate.
 
 ## 📄 Sources
 1. [api.bennydoesstuff.me](https://api.bennydoesstuff.me/)
-2. [honkling](https://github.com/honkling/Minehut-API-Docs)
+2. [Minehut API](https://docs.admin.wtf/)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
