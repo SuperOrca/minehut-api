@@ -21,7 +21,7 @@ class Server:
             base_url = '{}/server/{}'.format(BASE_API_URL, id)
         else:
             raise IllegalArgumentError("Server does not exist.")
-        self.data = requests.get(base_url).json()
+        self.data = requests.get(base_url).json()['server']
         if 'ok' not in self.data:
             return None
         else:
