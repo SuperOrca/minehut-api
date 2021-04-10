@@ -23,7 +23,7 @@ class Server:
             raise IllegalArgumentError("Server does not exist.")
         self.data = requests.get(base_url).json()
         if 'ok' not in self.data:
-            return self
+            return None
         else:
             raise IllegalArgumentError("Server does not exist.")
 
