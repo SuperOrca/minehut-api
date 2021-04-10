@@ -21,7 +21,7 @@ class Server:
         else:
             raise IllegalArgumentError("Server does not exist.")
 
-    def getData(self):
+    def toJSON(self):
         data = requests.get(self.base_url).json()
         if 'ok' not in data:
             return data['server']
@@ -29,62 +29,62 @@ class Server:
             raise IllegalArgumentError("Server does not exist.")
 
     def getServerProperties(self):
-        return self.getData()['server_properties']
+        return self.toJSON()['server_properties']
 
     def getPlugins(self):
-        return [Plugin(id=indentifier) for indentifier in self.getData()['active_plugins']]
+        return [Plugin(id=indentifier) for indentifier in self.toJSON()['active_plugins']]
 
     def getId(self):
-        return self.getData()['_id']
+        return self.toJSON()['_id']
 
     def getMOTD(self):
-        return self.getData()['motd']
+        return self.toJSON()['motd']
 
     def isVisible(self):
-        return self.getData()['visibility']
+        return self.toJSON()['visibility']
 
     def getServerPlan(self):
-        return self.getData()['server_plan']
+        return self.toJSON()['server_plan']
 
     def getName(self):
-        return self.getData()['name']
+        return self.toJSON()['name']
 
     def getCreation(self):
-        return self.getData()['creation']
+        return self.toJSON()['creation']
 
     def getCreationDatetime(self):
-        return datetime.fromtimestamp(self.getData()['creation'] / 1000.0)
+        return datetime.fromtimestamp(self.toJSON()['creation'] / 1000.0)
 
     def getPlatform(self):
-        return self.getData()['platform']
+        return self.toJSON()['platform']
 
     def getCreditsPerDay(self):
-        return self.getData()['credits_per_day']
+        return self.toJSON()['credits_per_day']
 
     def getPort(self):
-        return self.getData()['port']
+        return self.toJSON()['port']
 
     def getLastOnline(self):
-        return self.getData()['last_online']
+        return self.toJSON()['last_online']
 
     def getLastOnlineDatetime(self):
-        return datetime.fromtimestamp(self.getData()['last_online'] / 1000.0)
+        return datetime.fromtimestamp(self.toJSON()['last_online'] / 1000.0)
 
     def getIcon(self):
-        data = self.getData()
+        data = self.toJSON()
         return data['icon'] if 'icon' in data else None
 
     def isOnline(self):
-        return self.getData()['online']
+        return self.toJSON()['online']
 
     def getMaxPlayers(self):
-        return self.getData()['maxPlayers']
+        return self.toJSON()['maxPlayers']
 
     def getPlayerCount(self):
-        return self.getData()['playerCount']
+        return self.toJSON()['playerCount']
 
     def getPlayers(self):
-        return self.getData()['players']
+        return self.toJSON()['players']
 
     def admin(self, credentials: Credentials):
         return ServerManager(self.getId(), credentials)

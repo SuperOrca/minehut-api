@@ -25,9 +25,6 @@ class Plugin:
             if self.data is None:
                 raise IllegalArgumentError("Plugin does not exist.")
 
-    def getData(self):
-        return self.data
-
     def getId(self):
         return self.data['_id']
 
