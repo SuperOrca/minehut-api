@@ -10,8 +10,8 @@ class IllegalArgumentError(ValueError):
 
 
 class Plugin:
-    def __init__(self, name: str = None, id: str = None):
-        if name is None and id is None:
+    def __init__(self, name: str = "", id: str = None):
+        if name == "" and id is None:
             raise IllegalArgumentError("Plugin does not exist.")
         else:
             self.data = None
