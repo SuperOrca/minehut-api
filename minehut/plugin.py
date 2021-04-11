@@ -19,7 +19,7 @@ class Plugin:
                 if id == plugin['_id']:
                     self.data = plugin
                     break
-                elif name == plugin['name']:
+                elif name.lower() == plugin['name'].lower():
                     self.data = plugin
                     break
             if self.data is None:
