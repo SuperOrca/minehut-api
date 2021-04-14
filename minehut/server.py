@@ -15,6 +15,7 @@ class IllegalArgumentError(ValueError):
 
 class Server:
     def __init__(self, name: str = None, id: str = None):
+        base_url = ''
         if name is not None:
             base_url = '{}/server/{}?byName=true'.format(BASE_API_URL, name)
         elif id is not None:
@@ -23,6 +24,8 @@ class Server:
             raise IllegalArgumentError("Server does not exist.")
         self.data = requests.get(base_url).json()['server']
         if 'ok' not in self.data:
+            return None
+        else:
             raise IllegalArgumentError("Server does not exist.")
 
     def getServerProperties(self):
