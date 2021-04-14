@@ -4,6 +4,7 @@ import requests
 
 from .manager import ServerManager, Credentials
 from .plugin import Plugin
+from .properties import ServerProperties
 
 BASE_API_URL = "https://api.minehut.com"
 
@@ -14,7 +15,6 @@ class IllegalArgumentError(ValueError):
 
 class Server:
     def __init__(self, name: str = None, id: str = None):
-        base_url = ''
         if name is not None:
             base_url = '{}/server/{}?byName=true'.format(BASE_API_URL, name)
         elif id is not None:
@@ -23,12 +23,10 @@ class Server:
             raise IllegalArgumentError("Server does not exist.")
         self.data = requests.get(base_url).json()['server']
         if 'ok' not in self.data:
-            return None
-        else:
             raise IllegalArgumentError("Server does not exist.")
 
     def getServerProperties(self):
-        return self.data['server_properties']
+        return ServerProperties(self.data['server_properties'])
 
     def getPlugins(self):
         return [Plugin(id=indentifier) for indentifier in self.data['active_plugins']]

@@ -106,7 +106,7 @@ class ServerManager:
 
     def deleteBackup(self, backup):
         data = {"backup_id": backup}
-        return requests.delete('{}/v1/server/{}/backup/create'.format(BASE_API_URL, self.id), data=data,
+        return requests.delete('{}/v1/server/{}/backup'.format(BASE_API_URL, self.id), data=data,
                                headers=self.headers).json()
 
     def reset(self):
