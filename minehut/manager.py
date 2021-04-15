@@ -17,6 +17,12 @@ class Credentials:
         self.minehut_session_id = minehut_session_id
         self.minehut_auth_token = minehut_auth_token
 
+    def getSessionId(self):
+        return self.minehut_session_id
+
+    def getAuthToken(self):
+        return self.minehut_auth_token
+
 
 class ServerManager:
     def __init__(self, id: str, credentials: Credentials):
@@ -138,7 +144,10 @@ async def scrapeCredentials(email: str, password: str):
 
     await browser.close()
 
-    return Credentials(localStorage.get("minehut_session_id"), localStorage.get("minehut_auth_token"))
+    return Credentials(
+        localStorage.get("minehut_session_id"),
+        localStorage.get("minehut_auth_token")
+    )
 
 
 def getCredentials(email: str, password: str):

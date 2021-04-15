@@ -22,4 +22,4 @@ def getServerCount():
 
 def getTop5():
     data = requests.get('{}/network/top_servers'.format(BASE_API_URL)).json()
-    return [Server(server['name']) for server in data['servers']]
+    return [Server(id=server['_id']) for server in data['servers']]
