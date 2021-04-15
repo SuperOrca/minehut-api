@@ -2,15 +2,12 @@ from datetime import datetime
 
 import requests
 
+from .error import IllegalArgumentError
 from .manager import ServerManager, Credentials
 from .plugin import Plugin
 from .properties import ServerProperties
 
 BASE_API_URL = "https://api.minehut.com"
-
-
-class IllegalArgumentError(ValueError):
-    pass
 
 
 class Server:

@@ -2,11 +2,9 @@ from datetime import datetime
 
 import requests
 
+from .error import IllegalArgumentError
+
 BASE_API_URL = "https://api.minehut.com"
-
-
-class IllegalArgumentError(ValueError):
-    pass
 
 
 class Plugin:
